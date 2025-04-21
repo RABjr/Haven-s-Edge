@@ -9,57 +9,98 @@
   <style>
     body {
       font-family: 'Orbitron', sans-serif;
-      background: linear-gradient(to right, #0f0f0f, #1c1c1c);
+      background-color: #0b0b0b;
       color: #fff;
+      margin: 0;
+      padding: 0;
     }
     .hero {
       background: url('havens_edge_frame.png') center center/cover no-repeat;
       height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      animation: backgroundZoom 30s infinite alternate ease-in-out;
+    }
+    @keyframes backgroundZoom {
+      0% {
+        background-size: 100%;
+      }
+      100% {
+        background-size: 110%;
+      }
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: 0;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 10;
+      animation: floatText 6s ease-in-out infinite;
+    }
+    @keyframes floatText {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+    .hero h1 {
+      font-size: 4rem;
+      color: #f97316;
+      text-shadow: 0 0 25px #f97316, 0 0 35px #f97316;
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 15px #f97316;
+      }
+      to {
+        text-shadow: 0 0 30px #f97316, 0 0 50px #f97316;
+      }
+    }
+    .hero p {
+      font-size: 1.5rem;
+      margin-top: 1rem;
+      color: #e0e0e0;
+      text-shadow: 0 0 10px #000;
+    }
+    .join-btn {
+      margin-top: 2rem;
+      background-color: #f97316;
+      padding: 0.75rem 2rem;
+      font-size: 1rem;
+      font-weight: bold;
+      color: white;
+      border: none;
+      border-radius: 9999px;
+      box-shadow: 0 0 15px #f97316;
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
+    .join-btn:hover {
+      background-color: #fb923c;
+      transform: scale(1.05);
     }
   </style>
 </head>
 <body>
-  <section class="hero flex items-center justify-center text-center">
-    <div class="bg-black bg-opacity-70 p-8 rounded-xl max-w-xl">
-      <h1 class="text-5xl font-bold text-orange-500 mb-4">Welcome to Haven's Edge</h1>
-      <p class="text-xl mb-6">A cinematic PvP ARK world with sanctuary protection zones and boosted progression.</p>
-      <a href="#connect" class="bg-orange-500 hover:bg-orange-600 px-6 py-3 rounded-full text-white font-semibold">Join Us</a>
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Welcome to Haven's Edge</h1>
+      <p>A cinematic PvP ARK world with sanctuary protection zones and boosted progression.</p>
+      <a href="#connect"><button class="join-btn">Join Us</button></a>
     </div>
-  </section>
-
-  <section class="py-20 px-6 max-w-5xl mx-auto text-center">
-    <h2 class="text-4xl text-orange-400 mb-4">What is Haven's Edge?</h2>
-    <p class="text-lg text-gray-300">
-      Haven’s Edge is a cluster of ARK Survival Ascended servers that mix the thrill of PvP with the security of the Sanctuary — a safe zone inspired by the Continental Hotel where tribes can rest, trade, and store resources without fear of raids.
-    </p>
-  </section>
-
-  <section class="py-20 bg-gray-900 px-6 text-center">
-    <h2 class="text-4xl text-yellow-400 mb-4">Features</h2>
-    <ul class="text-lg text-gray-300 space-y-2">
-      <li>⚔️ Balanced PvP with Safe Zones</li>
-      <li>🦖 Custom Vault Rooms & Player Housing</li>
-      <li>💥 Boosted XP, Harvest, and Taming Rates</li>
-      <li>🌍 Cross-map Travel and Sanctuary Access</li>
-      <li>🎯 Player-run economy and vault rental system</li>
-    </ul>
-  </section>
-
-  <section class="py-20 px-6 max-w-5xl mx-auto text-center">
-    <h2 class="text-4xl text-red-400 mb-4">Rules</h2>
-    <ul class="text-lg text-gray-300 space-y-2">
-      <li>🛑 No PvP or griefing in sanctuary zones</li>
-      <li>🤝 Respect other players & their property</li>
-      <li>🚫 No blocking caves, obelisks, or resource areas</li>
-      <li>⚠️ No cheating or exploit abuse — zero tolerance</li>
-    </ul>
-  </section>
-
-  <section class="py-20 bg-gray-800 px-6 text-center">
-    <h2 class="text-4xl text-green-400 mb-4">Sanctuary System</h2>
-    <p class="text-lg text-gray-300 max-w-3xl mx-auto">
-      The Sanctuary is a protected environment located in each map’s hub. Every tribe may rent a secure vault space or personal room, protected by admin enforcement and peace protocols. Think of it as a “Continental Hotel” — neutral ground for all.
-    </p>
   </section>
 
   <section id="connect" class="py-20 px-6 max-w-5xl mx-auto text-center">
